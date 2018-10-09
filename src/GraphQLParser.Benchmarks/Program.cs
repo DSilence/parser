@@ -8,7 +8,7 @@ namespace GraphQLParser.Benchmarks
         {
 //            var bench = new LexerBenchmark();
 //            bench.LexKitchenSink();
-            BenchmarkRunner.Run<LexerBenchmark>();
+            BenchmarkRunner.Run<FullParsingTest>();
         }
     }
 }

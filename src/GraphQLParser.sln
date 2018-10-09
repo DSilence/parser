@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQLParser.Tests", "Grap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQLParser.Benchmarks", "GraphQLParser.Benchmarks\GraphQLParser.Benchmarks.csproj", "{78D53BE8-375C-4E27-8EDA-F79B65B52C93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLParser.Native", "GraphQLParser.Native\GraphQLParser.Native.csproj", "{7FFFB83A-E11F-4B1B-BD23-F514C2D2B0D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{78D53BE8-375C-4E27-8EDA-F79B65B52C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78D53BE8-375C-4E27-8EDA-F79B65B52C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78D53BE8-375C-4E27-8EDA-F79B65B52C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FFFB83A-E11F-4B1B-BD23-F514C2D2B0D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFFB83A-E11F-4B1B-BD23-F514C2D2B0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFFB83A-E11F-4B1B-BD23-F514C2D2B0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFFB83A-E11F-4B1B-BD23-F514C2D2B0D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
