@@ -1,4 +1,6 @@
-﻿namespace GraphQLParser.Exceptions
+﻿using GraphQLParser.Extensions;
+
+namespace GraphQLParser.Exceptions
 {
     using System;
     using System.Linq;
@@ -25,7 +27,7 @@
             var lineNum = line.ToString();
             var nextLineNum = (line + 1).ToString();
             var padLen = nextLineNum.Length;
-            var lines = source.Body
+            var lines = source.Body.Span.ToString()
                 .Split(new string[] { "\n" }, StringSplitOptions.None)
                 .Select(e => ReplaceWithUnicodeRepresentation(e))
                 .ToArray();

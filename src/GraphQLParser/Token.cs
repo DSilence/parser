@@ -1,7 +1,10 @@
-﻿namespace GraphQLParser
+﻿using System;
+
+namespace GraphQLParser
 {
     public enum TokenKind
     {
+        UNDEFINED = 0,
         EOF = 1,
         BANG = 2,
         DOLLAR = 3,
@@ -22,12 +25,22 @@
         STRING = 18
     }
 
-    public class Token
+    public ref struct Token
     {
+        public bool IsEmpty => Kind == TokenKind.UNDEFINED;
         public int End { get; set; }
         public TokenKind Kind { get; set; }
         public int Start { get; set; }
-        public string Value { get; set; }
+        public ReadOnlySpan<char> Value { get; set; }
+
+        public Token(int start, int end, ReadOnlySpan<char> value, TokenKind kind)
+        {
+            Start = start;
+            End = end;
+            Value = value;
+            Kind = kind;
+        }
+
 
         public static string GetTokenKindDescription(TokenKind kind)
         {
@@ -59,7 +72,7 @@
         public override string ToString()
         {
             return this.Value != null
-                ? $"{GetTokenKindDescription(this.Kind)} \"{this.Value}\""
+                ? $"{GetTokenKindDescription(this.Kind)} \"{this.Value.ToString()}\""
                 : GetTokenKindDescription(this.Kind);
         }
     }

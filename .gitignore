@@ -21,3 +21,4 @@ _ReSharper.*
 node_modules
 BenchmarkDotNet.Artifacts
 artifacts/
+.idea

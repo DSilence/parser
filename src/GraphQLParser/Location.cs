@@ -1,16 +1,19 @@
-﻿namespace GraphQLParser
+﻿using GraphQLParser.Extensions;
+
+namespace GraphQLParser
 {
     using System.Text.RegularExpressions;
 
     public class Location
     {
+        private static readonly Regex LineRegex = new Regex("\r\n|[\n\r]", RegexOptions.Compiled | RegexOptions.ECMAScript);
+
         public Location(ISource source, int position)
         {
-            var lineRegex = new Regex("\r\n|[\n\r]", RegexOptions.ECMAScript);
             this.Line = 1;
             this.Column = position + 1;
 
-            var matches = lineRegex.Matches(source.Body);
+            var matches = LineRegex.Matches(source.Body.Span.ToString());
             foreach (Match match in matches)
             {
                 if (match.Index >= position)
