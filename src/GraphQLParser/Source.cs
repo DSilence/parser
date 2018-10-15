@@ -1,4 +1,6 @@
-﻿namespace GraphQLParser
+﻿using System;
+
+namespace GraphQLParser
 {
     public class Source : ISource
     {
@@ -9,10 +11,10 @@
         public Source(string body, string name)
         {
             this.Name = name;
-            this.Body = MonetizeLineBreaks(body);
+            this.Body = MonetizeLineBreaks(body).AsMemory();
         }
 
-        public string Body { get; set; }
+        public ReadOnlyMemory<char> Body { get; set; }
         public string Name { get; set; }
 
         private static string MonetizeLineBreaks(string input)

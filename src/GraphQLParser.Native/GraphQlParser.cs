@@ -6,7 +6,7 @@ namespace GraphQLParser.Native
 {
     public static class GraphQlParser
     {
-        [DllImport("graphqlparser.dll", EntryPoint = "graphql_parse_string", SetLastError = true)]
+        [DllImport("graphqlparser", EntryPoint = "graphql_parse_string", SetLastError = true)]
         private static extern IntPtr GraphqlParseString(string text, out string error);
 
         public static GraphQlDocument ParseString(string text)
@@ -15,7 +15,7 @@ namespace GraphQLParser.Native
             return new GraphQlDocument(result, error);
         }
 
-        [DllImport("graphqlparser.dll", EntryPoint = "graphql_parse_string_with_experimental_schema_support", SetLastError = true)]
+        [DllImport("graphqlparser", EntryPoint = "graphql_parse_string_with_experimental_schema_support", SetLastError = true)]
         public static extern IntPtr ParseStringWithExperimentalSchemaSupport(string text, string[] error);
     }
 }

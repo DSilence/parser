@@ -9,6 +9,11 @@ namespace GraphQLParser.Benchmarks
 //            var bench = new LexerBenchmark();
 //            bench.LexKitchenSink();
             BenchmarkRunner.Run<FullParsingTest>();
+            /*var bench = new FullParsingTest();
+            while (true)
+            {
+                bench.Managed();
+            }*/
         }
     }
 }

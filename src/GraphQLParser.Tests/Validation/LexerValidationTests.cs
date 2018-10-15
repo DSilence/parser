@@ -29,10 +29,11 @@
             Assert.Equal(TokenKind.NAME, token.Kind);
             Assert.Equal(0, token.Start);
             Assert.Equal(1, token.End);
-            Assert.Equal("a", token.Value);
+            Assert.True("a" == token.Value);
+            var end = token.End;
 
             var exception = Assert.Throws<GraphQLSyntaxErrorException>(
-                () => new Lexer().Lex(new Source("a-b"), token.End));
+                () => new Lexer().Lex(new Source("a-b"), end));
 
             Assert.Equal(("Syntax Error GraphQL (1:3) Invalid number, expected digit but got: \"b\"" + @"
 1: a-b

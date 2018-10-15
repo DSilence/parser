@@ -25,7 +25,7 @@
             var lineNum = line.ToString();
             var nextLineNum = (line + 1).ToString();
             var padLen = nextLineNum.Length;
-            var lines = source.Body
+            var lines = new string(source.Body.Span)
                 .Split(new string[] { "\n" }, StringSplitOptions.None)
                 .Select(e => ReplaceWithUnicodeRepresentation(e))
                 .ToArray();

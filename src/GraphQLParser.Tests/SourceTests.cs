@@ -11,7 +11,7 @@ namespace GraphQLParser.Tests
         {
             var source = new Source("somesrc");
 
-            Assert.Equal("somesrc", source.Body);
+            Assert.Equal("somesrc", new string(source.Body.Span));
         }
 
         [Fact]

@@ -1,8 +1,10 @@
-﻿namespace GraphQLParser
+﻿using System;
+
+namespace GraphQLParser
 {
     public interface ISource
     {
-        string Body { get; set; }
+        ReadOnlyMemory<char> Body { get; set; }
         string Name { get; set; }
     }
 }

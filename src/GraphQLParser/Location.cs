@@ -10,7 +10,7 @@
             this.Line = 1;
             this.Column = position + 1;
 
-            var matches = lineRegex.Matches(source.Body);
+            var matches = lineRegex.Matches(new string(source.Body.Span));
             foreach (Match match in matches)
             {
                 if (match.Index >= position)

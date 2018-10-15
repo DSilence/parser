@@ -30,7 +30,7 @@
         public void Lex_ATPunctuation_HasCorrectValue()
         {
             var token = GetATPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -58,7 +58,7 @@
         public void Lex_BangPunctuation_HasCorrectValue()
         {
             var token = GetBangPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -86,7 +86,7 @@
         public void Lex_ColonPunctuation_HasCorrectValue()
         {
             var token = GetColonPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -114,7 +114,7 @@
         public void Lex_DollarPunctuation_HasCorrectValue()
         {
             var token = GetDollarPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -150,7 +150,7 @@
         public void Lex_EqualsPunctuation_HasCorrectValue()
         {
             var token = GetEqualsPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -171,7 +171,7 @@
         public void Lex_EscapedStringToken_HasCorrectValue()
         {
             var token = GetEscapedStringTokenLexer();
-            Assert.Equal("escaped \n\r\b\t\f", token.Value);
+            Assert.True("escaped \n\r\b\t\f" == token.Value);
         }
 
         [Fact]
@@ -206,7 +206,7 @@
         public void Lex_LeftBracePunctuation_HasCorrectValue()
         {
             var token = GetLeftBracePunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -234,7 +234,7 @@
         public void Lex_LeftBracketPunctuation_HasCorrectValue()
         {
             var token = GetLeftBracketPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -262,7 +262,7 @@
         public void Lex_LeftParenthesisPunctuation_HasCorrectValue()
         {
             var token = GetLeftParenthesisPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -283,7 +283,7 @@
         public void Lex_MultipleDecimalsIntToken_HasCorrectValue()
         {
             var token = GetMultipleDecimalsIntTokenLexer();
-            Assert.Equal("123", token.Value);
+            Assert.True("123" == token.Value);
         }
 
         [Fact]
@@ -311,7 +311,7 @@
         public void Lex_NameTokenWithComments_HasCorrectValue()
         {
             var token = GetSingleNameTokenLexerWithComments();
-            Assert.Equal("foo", token.Value);
+            Assert.True("foo" == token.Value);
         }
 
         [Fact]
@@ -339,7 +339,7 @@
         public void Lex_NameTokenWithWhitespaces_HasCorrectValue()
         {
             var token = GetSingleNameTokenLexerSurroundedWithWhitespaces();
-            Assert.Equal("foo", token.Value);
+            Assert.True("foo" == token.Value);
         }
 
         [Fact]
@@ -382,7 +382,7 @@
         public void Lex_PipePunctuation_HasCorrectValue()
         {
             var token = GetPipePunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -403,7 +403,7 @@
         public void Lex_QuoteStringToken_HasCorrectValue()
         {
             var token = GetQuoteStringTokenLexer();
-            Assert.Equal("quote \"", token.Value);
+            Assert.True("quote \"" == token.Value);
         }
 
         [Fact]
@@ -438,7 +438,7 @@
         public void Lex_RightBracePunctuation_HasCorrectValue()
         {
             var token = GetRightBracePunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -466,7 +466,7 @@
         public void Lex_RightBracketPunctuation_HasCorrectValue()
         {
             var token = GetRightBracketPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -494,7 +494,7 @@
         public void Lex_RightParenthesisPunctuation_HasCorrectValue()
         {
             var token = GetRightParenthesisPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -515,7 +515,7 @@
         public void Lex_SimpleStringToken_HasCorrectValue()
         {
             var token = GetSimpleStringTokenLexer();
-            Assert.Equal("str", token.Value);
+            Assert.True("str" == token.Value);
         }
 
         [Fact]
@@ -543,7 +543,7 @@
         public void Lex_SingleDecimalIntToken_HasCorrectValue()
         {
             var token = GetSingleDecimalIntTokenLexer();
-            Assert.Equal("0", token.Value);
+            Assert.True("0" == token.Value);
         }
 
         [Fact]
@@ -578,7 +578,7 @@
         public void Lex_SingleFloatTokenLexer_HasCorrectValue()
         {
             var token = GetSingleFloatTokenLexer();
-            Assert.Equal("4.123", token.Value);
+            Assert.True("4.123" == token.Value);
         }
 
         [Fact]
@@ -606,7 +606,7 @@
         public void Lex_SingleFloatWithExplicitlyPositiveExponentTokenLexer_HasCorrectValue()
         {
             var token = GetSingleFloatWithExplicitlyPositiveExponentTokenLexer();
-            Assert.Equal("123e+4", token.Value);
+            Assert.True("123e+4" == token.Value);
         }
 
         [Fact]
@@ -634,7 +634,7 @@
         public void Lex_SingleFloatWithExponentCapitalLetterTokenLexer_HasCorrectValue()
         {
             var token = GetSingleFloatWithExponentCapitalLetterTokenLexer();
-            Assert.Equal("123E4", token.Value);
+            Assert.True("123E4" == token.Value);
         }
 
         [Fact]
@@ -662,7 +662,7 @@
         public void Lex_SingleFloatWithExponentTokenLexer_HasCorrectValue()
         {
             var token = GetSingleFloatWithExponentTokenLexer();
-            Assert.Equal("123e4", token.Value);
+            Assert.True("123e4" == token.Value);
         }
 
         [Fact]
@@ -690,7 +690,7 @@
         public void Lex_SingleFloatWithNegativeExponentTokenLexer_HasCorrectValue()
         {
             var token = GetSingleFloatWithNegativeExponentTokenLexer();
-            Assert.Equal("123e-4", token.Value);
+            Assert.True("123e-4" == token.Value);
         }
 
         [Fact]
@@ -718,7 +718,7 @@
         public void Lex_SingleNameSurroundedByCommasTokenLexer_HasCorrectValue()
         {
             var token = GetSingleNameSurroundedByCommasTokenLexer();
-            Assert.Equal("foo", token.Value);
+            Assert.True("foo" == token.Value);
         }
 
         [Fact]
@@ -746,7 +746,7 @@
         public void Lex_SingleNameWithBOMHeaderTokenLexer_HasCorrectValue()
         {
             var token = GetSingleNameWithBOMHeaderTokenLexer();
-            Assert.Equal("foo", token.Value);
+            Assert.True("foo" == token.Value);
         }
 
         [Fact]
@@ -774,7 +774,7 @@
         public void Lex_SingleNegativeFloatTokenLexer_HasCorrectValue()
         {
             var token = GetSingleNegativeFloatTokenLexer();
-            Assert.Equal("-0.123", token.Value);
+            Assert.True("-0.123" == token.Value);
         }
 
         [Fact]
@@ -802,7 +802,7 @@
         public void Lex_SingleNegativeFloatWithExponentTokenLexer_HasCorrectValue()
         {
             var token = GetSingleNegativeFloatWithExponentTokenLexer();
-            Assert.Equal("-123e4", token.Value);
+            Assert.True("-123e4" == token.Value);
         }
 
         [Fact]
@@ -830,7 +830,7 @@
         public void Lex_SingleNegativeIntTokenLexer_HasCorrectValue()
         {
             var token = GetSingleNegativeIntTokenLexer();
-            Assert.Equal("-3", token.Value);
+            Assert.True("-3" == token.Value);
         }
 
         [Fact]
@@ -858,7 +858,7 @@
         public void Lex_SingleStringWithSlashesTokenLexer_HasCorrectValue()
         {
             var token = GetSingleStringWithSlashesTokenLexer();
-            Assert.Equal("slashes \\ /", token.Value);
+            Assert.True("slashes \\ /" == token.Value);
         }
 
         [Fact]
@@ -886,7 +886,7 @@
         public void Lex_SingleStringWithUnicodeCharactersTokenLexer_HasCorrectValue()
         {
             var token = GetSingleStringWithUnicodeCharactersTokenLexer();
-            Assert.Equal("unicode \u1234\u5678\u90AB\uCDEF", token.Value);
+            Assert.True("unicode \u1234\u5678\u90AB\uCDEF" == token.Value);
         }
 
         [Fact]
@@ -914,7 +914,7 @@
         public void Lex_SpreadPunctuation_HasCorrectValue()
         {
             var token = GetSpreadPunctuationTokenLexer();
-            Assert.Null(token.Value);
+            Assert.True(token.Value.IsEmpty);
         }
 
         [Fact]
@@ -935,7 +935,7 @@
         public void Lex_WhiteSpaceStringToken_HasCorrectValue()
         {
             var token = GetWhiteSpaceStringTokenLexer();
-            Assert.Equal(" white space ", token.Value);
+            Assert.True(" white space " == token.Value);
         }
 
         [Fact]

@@ -59,6 +59,7 @@ fragment frag on Friend {
   query
 }";
 
+
       [Benchmark]
       public GraphQlDocument Native()
       {
