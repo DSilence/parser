@@ -70,10 +70,17 @@ fragment frag on Friend {
       }
 
       [Benchmark]
-      public GraphQLDocument Managed()
+      public GraphQLDocument ManagedNew()
       {
-        var parser = new Parser(new Lexer());
-        return parser.Parse(new Source(KitchenSink));
+          var parser = new Parser(new Lexer());
+          return parser.Parse(new Source(KitchenSink));
+      }
+
+      [Benchmark]
+      public Old.AST.GraphQLDocument ManagedOld()
+      {
+        var parser = new Old.Parser(new Old.Lexer());
+        return parser.Parse(new Old.Source(KitchenSink));
       }
     }
 }

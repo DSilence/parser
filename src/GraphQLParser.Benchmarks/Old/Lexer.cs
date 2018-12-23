@@ -1,11 +1,7 @@
-﻿using System.Text;
-
-namespace GraphQLParser
+﻿namespace GraphQLParser.Benchmarks.Old
 {
     public class Lexer : ILexer
     {
-        private readonly StringBuilder _stringBuilder = new StringBuilder();
-
         public Token Lex(ISource source)
         {
             return this.Lex(source, 0);
@@ -13,8 +9,10 @@ namespace GraphQLParser
 
         public Token Lex(ISource source, int start)
         {
-            var context = new LexerContext(source, start, _stringBuilder);
+            using (var context = new LexerContext(source, start))
+            {
                 return context.GetToken();
+            }
         }
     }
 }
