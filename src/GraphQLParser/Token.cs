@@ -25,15 +25,15 @@ namespace GraphQLParser
         STRING = 18
     }
 
-    public ref struct Token
+    public struct Token
     {
         public bool IsEmpty => Kind == TokenKind.UNDEFINED;
         public int End { get; set; }
         public TokenKind Kind { get; set; }
         public int Start { get; set; }
-        public ReadOnlySpan<char> Value { get; set; }
+        public ReadOnlyMemory<char> Value { get; set; }
 
-        public Token(int start, int end, ReadOnlySpan<char> value, TokenKind kind)
+        public Token(int start, int end, ReadOnlyMemory<char> value, TokenKind kind)
         {
             Start = start;
             End = end;
@@ -71,7 +71,7 @@ namespace GraphQLParser
 
         public override string ToString()
         {
-            return this.Value != null
+            return !this.Value.IsEmpty
                 ? $"{GetTokenKindDescription(this.Kind)} \"{this.Value.ToString()}\""
                 : GetTokenKindDescription(this.Kind);
         }

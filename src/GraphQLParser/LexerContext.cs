@@ -119,7 +119,7 @@ namespace GraphQLParser
             return new Token()
             {
                 Kind = TokenKind.STRING,
-                Value = value.ToString().AsSpan(),
+                Value = value.ToString().AsMemory(),
                 Start = start,
                 End = this.currentIndex + 1
             };
@@ -223,8 +223,7 @@ namespace GraphQLParser
 
         private Token CreateFloatToken(int start)
         {
-            return new Token(start, this.currentIndex, this.body.Slice(start, this.currentIndex - start), TokenKind.FLOAT)
-            ;
+            return new Token(start, this.currentIndex, this._source.Body.Slice(start, this.currentIndex - start), TokenKind.FLOAT);
         }
 
         private Token CreateIntToken(int start)
@@ -234,7 +233,7 @@ namespace GraphQLParser
                 Kind = TokenKind.INT,
                 Start = start,
                 End = this.currentIndex,
-                Value = this.body.Slice(start, this.currentIndex - start)
+                Value = this._source.Body.Slice(start, this.currentIndex - start)
             };
         }
 
@@ -245,7 +244,7 @@ namespace GraphQLParser
                 Start = start,
                 End = this.currentIndex,
                 Kind = TokenKind.NAME,
-                Value = this.body.Slice(start, this.currentIndex - start)
+                Value = this._source.Body.Slice(start, this.currentIndex - start)
             };
         }
 

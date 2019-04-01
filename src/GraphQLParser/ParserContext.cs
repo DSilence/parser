@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using GraphQLParser.AST;
 using GraphQLParser.Exceptions;
 using GraphQLParser.Extensions;
@@ -197,7 +196,7 @@ namespace GraphQLParser
         private GraphQLNamedType GetTypeCondition()
         {
             GraphQLNamedType typeCondition = null;
-            if (this.currentToken.Value != null && this.currentToken.Value.SequenceEqual("on".AsSpan()))
+            if (!this.currentToken.Value.IsEmpty && this.currentToken.Value.SequenceEqual("on"))
             {
                 this.Advance();
                 typeCondition = this.ParseNamedType();
@@ -257,7 +256,7 @@ namespace GraphQLParser
             this.Advance();
             return new GraphQLScalarValue(ASTNodeKind.BooleanValue)
             {
-                Value = token.Value.ToString(),
+                Value = token.Value,
                 Location = this.GetLocation(token.Start)
             };
         }
@@ -394,7 +393,7 @@ namespace GraphQLParser
             this.Advance();
             return new GraphQLScalarValue(ASTNodeKind.EnumValue)
             {
-                Value = token.Value.ToString(),
+                Value = token.Value,
                 Location = this.GetLocation(token.Start)
             };
         }
@@ -454,7 +453,7 @@ namespace GraphQLParser
             this.Advance();
             return new GraphQLScalarValue(ASTNodeKind.FloatValue)
             {
-                Value = token.Value.ToString(),
+                Value = token.Value,
                 Location = this.GetLocation(token.Start)
             };
         }
@@ -464,7 +463,7 @@ namespace GraphQLParser
             var start = this.currentToken.Start;
             this.Expect(TokenKind.SPREAD);
 
-            if (this.Peek(TokenKind.NAME) && !this.currentToken.Value.SequenceEqual("on".AsSpan()))
+            if (this.Peek(TokenKind.NAME) && !this.currentToken.Value.SequenceEqual("on"))
             {
                 return this.CreateGraphQLFragmentSpread(start);
             }
@@ -489,7 +488,7 @@ namespace GraphQLParser
 
         private GraphQLName ParseFragmentName()
         {
-            if (this.currentToken.Value.SequenceEqual("on".AsSpan()))
+            if (this.currentToken.Value.SequenceEqual("on"))
             {
                 throw new GraphQLSyntaxErrorException(
                     $"Unexpected {this.currentToken.ToString()}", this.source, this.currentToken.Start);
@@ -501,7 +500,7 @@ namespace GraphQLParser
         private IEnumerable<GraphQLNamedType> ParseImplementsInterfaces()
         {
             var types = new List<GraphQLNamedType>();
-            if (this.currentToken.Value.SequenceEqual("implements".AsSpan()))
+            if (this.currentToken.Value.SequenceEqual("implements"))
             {
                 this.Advance();
 
@@ -564,7 +563,7 @@ namespace GraphQLParser
 
             return new GraphQLScalarValue(ASTNodeKind.IntValue)
             {
-                Value = token.Value.ToString(),
+                Value = token.Value,
                 Location = this.GetLocation(token.Start)
             };
         }
@@ -670,7 +669,7 @@ namespace GraphQLParser
 
             if (token.Value.SequenceEqual(TrueParameterName) || token.Value.SequenceEqual(FalseParameterName))
                 return this.ParseBooleanValue(token);
-            else if (token.Value != null)
+            else if (!token.Value.IsEmpty)
             {
                 if (token.Value.SequenceEqual(NullParameterName))
                     return this.ParseNullValue(token);
@@ -855,7 +854,7 @@ namespace GraphQLParser
             this.Advance();
             return new GraphQLScalarValue(ASTNodeKind.StringValue)
             {
-                Value = token.Value.ToString(),
+                Value = token.Value,
                 Location = this.GetLocation(token.Start)
             };
         }

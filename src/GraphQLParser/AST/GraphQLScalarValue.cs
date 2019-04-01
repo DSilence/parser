@@ -1,4 +1,6 @@
-﻿namespace GraphQLParser.AST
+﻿using System;
+
+namespace GraphQLParser.AST
 {
     public class GraphQLScalarValue : GraphQLValue
     {
@@ -17,13 +19,10 @@
             }
         }
 
-        public string Value { get; set; }
+        public ReadOnlyMemory<char> Value { get; set; }
 
         public override string ToString()
         {
-            if (this.Kind == ASTNodeKind.StringValue)
-                return $"\"{this.Value}\"";
-
             return this.Value.ToString();
         }
     }

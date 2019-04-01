@@ -1,6 +1,4 @@
-﻿using BenchmarkDotNet.Running;
-
-namespace GraphQLParser.Benchmarks
+﻿namespace GraphQLParser.Benchmarks
 {
     internal static class Program
     {
@@ -10,12 +8,12 @@ namespace GraphQLParser.Benchmarks
 //            bench.LexKitchenSink();
             //var t = new FullParsingTest().ManagedNew();
 
-            BenchmarkRunner.Run<FullParsingTest>();
-            /*var bench = new FullParsingTest();
+            //BenchmarkRunner.Run<FullParsingTest>();
+            var bench = new FullParsingTest();
             while (true)
             {
-                bench.Managed();
-            }*/
+                bench.ManagedNew();
+            }
         }
     }
 }
